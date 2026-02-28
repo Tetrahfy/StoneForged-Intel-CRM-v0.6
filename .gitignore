@@ -1,0 +1,11 @@
+# Node / Vite
+node_modules/
+.vite/
+dist/
+npm-debug.log
+yarn-error.log
+
+# Database & temp files
+stoneforged.db
+*.log
+.DS_Store

@@ -1,73 +1,30 @@
-# React + TypeScript + Vite
+cat > README.md << 'EOF'
+# StoneForged-Intel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sales intelligence dashboard & lead generation tool for nutraceutical ingredient suppliers (functional gummies, sleep/energy products).
 
-Currently, two official plugins are available:
+Tracks trigger events (new R&D hires, reformulations, facility expansions, funding rounds) to identify high-readiness prospects and prioritize outreach.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Current Features (v0.6)
+- Add prospects manually with trigger-based auto-scoring (+3–4 bonus for high-value signals like reformulation)
+- Real-time search/filter by brand, trigger, decision maker, next action
+- Sortable table (brand & score)
+- Permanent delete (SQLite backend)
+- Export filtered or full list to CSV
+- Dark-mode UI with KPI cards
+- Local-first (no external APIs needed)
 
-## React Compiler
+## Tech Stack
+- Frontend: React 19 + TypeScript + Vite + Tailwind CSS v3
+- Backend: Node.js + Express + better-sqlite3 (SQLite database)
+- Fully offline/local development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Quick Start (Local)
+```bash
+# Backend (in one terminal)
+cd backend
+node server.js
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# Frontend (in separate terminal)
+cd frontend
+npm run dev
